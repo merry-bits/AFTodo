@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+/node_modules/
+/bower_components/
+/.settings/
+/.project
+/.pydevproject
+.pyenv/

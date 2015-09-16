@@ -1,0 +1,200 @@
+/* General
+ */
+.aft-body {
+  font-size: 0.8em;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f6f5f5;
+  padding-top: 5em;
+}
+
+.aft-wrapper {
+  margin: 0 auto;
+  max-width: 500px;
+  background-color: #fff;
+  border: 1px solid #e4e4e4;
+  border-radius: 5px;
+}
+
+.aft-js {
+  display: none;
+}
+
+.aft-gap-top {
+  margin-top: 2em;
+}
+
+.aft-space-left {
+  padding-left: 1em;
+}
+
+.aft-space-sides {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.aft-right {
+  float: right;
+}
+
+.aft-clear-after:after {
+  clear: both;
+}
+
+/* Headings
+ */
+.aft-h1 {
+  font-size: 2.4em;
+  font-family: "Arial Black", Gadget, sans-serif;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1em 0 0.8em;
+  text-align: center;
+}
+
+/* Footer
+ */
+.aft-footer {
+  padding: 0 2em 2em 2em;
+}
+
+/* Ruler
+ */
+.aft-hr {
+  border: none;
+  border-top: 1px dashed #d2d0d0;
+  margin: 1.7em 0;
+}
+
+/* Input
+ */
+.aft-input {
+    padding: 0 1em;
+    height: 2.2em;
+    border-radius: 0.3em;
+    border: 1px solid #b7b6b6;
+    box-shadow: inset 0.1em 0.1em 0.3em 0 rgba(150, 150, 150, .2);
+}
+    
+/* Simple button, darker gradient hover.
+ */
+.aft-btn {
+  position: relative;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  background: transparent;
+  background-image: linear-gradient(to bottom, #dfdedd, #d7d5d4);
+  background-repeat: no-repeat;
+  background-size: 100% 50%;
+  background-position: 0 100%;
+  border-radius: 0.3em;
+  color: #636363;
+  padding: 0.5em 1em;
+  border: 1px solid #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.aft-btn:before {
+  width: 100%;
+  position: absolute;
+  top: -1px;
+  bottom: calc(50% - 1px);
+  left: -1px;
+  background: #fff;
+  background-image: linear-gradient(to bottom, #ebeae9, #eae9e8);
+  content: "";
+  z-index: -1;
+  border: 1px solid #999;
+  border-bottom: none;
+  border-top-left-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+ }
+
+.aft-btn:hover {
+  text-decoration: none;
+  background-image: linear-gradient(to bottom, #d1d0cf, #d1d0cf);
+}
+
+.aft-btn:hover:before {
+  background-image: linear-gradient(to bottom, #e3e2e1, #e3e2e1);
+}
+
+/* Checkbox
+ */
+.aft-checkbox {
+   display: none;
+}
+
+.aft-checkbox-label {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding-left: 1.8em;
+  line-height: 2.2em;
+  vertical-align: bottom;
+}
+
+.aft-checkbox-label:before {
+  content: "";
+  display: inline-block;
+  line-height: 0.4em;
+  font-size: 1.4em;
+  border-radius: 0.2em;
+  border: 1px solid #888;
+
+  padding-left: 0em;
+  width: 0.6em;
+  height: 0.6em;
+
+  position: absolute;
+  left: 0.05em;
+  bottom: 0.4em;
+  background-color: #e8e9e8;
+  box-shadow:
+    inset 0 0.2em 0.2em 0 rgba(255, 255, 255, .7),
+    0 0 0 0.08em rgba(200, 200, 200, .8);
+}
+
+.aft-checkbox-label:hover:before {
+  box-shadow:
+    inset 0 0.2em 0.2em 0 rgba(255, 255, 255, .9),
+    0 0 0 0.08em rgba(200, 200, 200, .6);
+}
+
+.aft-checkbox:checked + label:before {
+  content: "\2713";
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+  color: #0b4164;
+  text-align: center;
+  background-color: #1c87b4;
+}
+
+
+/* Todo
+ */
+
+.aft-todo-item {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  position:relative;
+}
+
+.aft-todo-item-sortable:hover:after {
+  content: '\21f9';
+  font-size: 1.2em;
+  color: #bfbbbb;
+  position: absolute;
+  right: 1em;
+  top: calc(50% - 0.5em);
+  transform: rotate(90deg)
+}
+
+.aft-todo-odd {
+  background-color: #f4f7fa;
+}
+
+.aft-todo-done-text {
+  text-decoration: line-through;
+  color: #999999;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app="todo-list">
+<head>
+  <title>Todos</title>
+  <link rel="stylesheet" type="text/css" href="/static/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+</head>
+<body class="aft-body ">
+  <div class="aft-wrapper">
+    <h1 class="aft-h1">Todos</h1>
+    <hr class="aft-hr" />
+    <div ng-controller="TodoListController as todo_list_ctrl"
+      ng-init="todo_list_ctrl.load('{{ todolist_id }}')"
+    >
+      <form action="add" method="post" ng-submit="todo_list_ctrl.add($event)"
+        class="aft-space-sides"
+      >
+      <input name="todo_text" type="text" placeholder="What needs to be done?"
+        required="required" class="aft-input"
+        ng-model="todo_list_ctrl.new_todo.text"
+      />
+      <span class="aft-space-left"></span>
+      <button type="submit" class="aft-btn">Add Todo</button>
+      </form>
+      <div>
+      <ul ui-sortable="todo_list_ctrl.sort_options"
+        ng-model="todo_list_ctrl.todos" class="aft-gap-top"
+      >
+        <li ng-repeat="todo in todo_list_ctrl.todos"
+          ng-class-odd="'aft-todo-odd'" ng-class-even="'aft-todo-even'"
+          class="aft-js aft-todo-item aft-space-sides aft-todo-item-sortable"
+        >
+          <form ng-controller="TodoController as todo_ctrl"
+            ng-init="todo_ctrl.set_todo(todo)"
+          >
+          <input id="task-{[todo.id]}" type="checkbox"
+            class="aft-checkbox" ng-model="todo_ctrl.todo.done"
+            ng-change="todo_ctrl.mark_done('{{ todolist_id }}')"
+          />
+          <label for="task-{[todo.id]}" class="aft-checkbox-label"
+            ng-class="{'aft-todo-done-text': todo.done}"
+            >{[ todo.text ]}</label>
+          </form>
+        </li>
+        {# NO-JS version of the list. #}
+        {% for todo in todos %}
+          {# todo: id, text, done date, ordering #}
+        <li
+          class="aft-nojs {{ loop.cycle('aft-todo-odd', 'aft-todo-even') }}
+aft-todo-item aft-space-sides"
+        >
+          {% if not todo[2] %}
+          <form action="done" method="post">
+          {% endif %}
+            <input type="hidden" name="todo" value="{{ todo[0] }}" />
+            <input type="checkbox" class="aft-checkbox" disabled="disabled"
+              {% if todo[2] %}checked="checked"{% endif %}
+            />
+            <label for="task-{{ todo[0] }}"
+            class="aft-checkbox-label
+{% if todo[2] %}aft-todo-done-text{% endif %}"
+            >{{ todo[1] }}</label>
+            {% if not todo[2] %}
+            <button type="submit" class="aft-right aft-clear-after"
+            >Mark Done</button>
+            {% endif %}
+          {% if not todo[2] %}
+          </form>
+          {% endif %}
+        </li>
+        {% endfor %}    
+      </ul>
+      </div>
+      <hr class="aft-hr" />
+      <div class="aft-footer">
+        <span class="aft-js">{[ todo_list_ctrl.todos_left ]}</span>
+        <noscript>{{ todos_left }}</noscript>
+        items left
+        <a href="./all" ng-click="todo_list_ctrl.all($event)"
+          class="aft-right aft-clear-after"
+        >Mark all as complete</a>
+      </div>
+    </div>
+  </div>
+  <script src="/static/js/list.js"></script>
+</body>
+</html>
